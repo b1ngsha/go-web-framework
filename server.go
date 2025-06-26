@@ -1,8 +1,6 @@
-package server
+package main
 
-import (
-	"net/http"
-)
+import "net/http"
 
 // HandlerFunc defines the request handler used by server
 type HandlerFunc func(*Context)

@@ -1,4 +1,4 @@
-package server
+package main
 
 import (
 	"encoding/json"
@@ -15,6 +15,7 @@ type Context struct {
 	// request info
 	Path   string
 	Method string
+	Params map[string]string
 	// response info
 	StatusCode int
 }
@@ -27,6 +28,11 @@ func newContext(w http.ResponseWriter, req *http.Request) *Context {
 		Path:   req.URL.Path,
 		Method: req.Method,
 	}
+}
+
+// get param by key
+func (c *Context) Param(key string) string {
+	return c.Params[key]
 }
 
 // get post form value
